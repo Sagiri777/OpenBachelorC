@@ -25,6 +25,15 @@ ANDROID_FRIDA_SERVER_FILEPATH = "/data/local/tmp/florida-17.2.15"
 TMP_DIRPATH = "tmp/"
 
 
+# 1666 override
+ARCH_TO_FRIDA_SERVER_XZ_FILEPATH = {
+    "arm64-v8a": "frida-server/frida-server-16.5.9-android-arm64.xz",
+    "x86_64": "frida-server/frida-server-16.5.9-android-x86_64.xz",
+}
+
+ANDROID_FRIDA_SERVER_FILEPATH = "/data/local/tmp/florida-16.5.9"
+
+
 def get_running_emulators():
     proc = subprocess.run([ADB_FILEPATH, "devices"], capture_output=True, text=True)
 

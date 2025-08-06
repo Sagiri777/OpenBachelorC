@@ -116,26 +116,25 @@ files = [
 
 [[package]]
 name = "frida"
-version = "17.2.15"
+version = "16.6.6"
 description = "Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "frida-17.2.15-cp37-abi3-macosx_10_13_x86_64.whl", hash = "sha256:3c686d8789e6c02602e2c9aa7e538db92e02eb88974b6c5804239094d61a4d1a"},
-    {file = "frida-17.2.15-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:8acad322d254a46808fb590d7ad02191fcdacc42a87ecc4bcd96cc94932a9f17"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux1_i686.whl", hash = "sha256:abc51dc62b968c916a76a4f75f153629f1078820c66500fb1faf494123179a53"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux1_x86_64.whl", hash = "sha256:01f5ba0d605cc00e9472fe7481c1569b719554479c933aa07465710e5e1899b5"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:caa8b8c89ba868cddbe6b474ef457c98f373a04c0410fa712769808a2bc0308d"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux2014_armv7l.whl", hash = "sha256:6fee2cf64c2ef1bba3645d244f2084d48634b6fb8f9d1d1e028b3a2570a4d35d"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux_2_17_aarch64.whl", hash = "sha256:e445a62089328e50f4b9343899852336b7aa24d9c7ca5b4a6be69c42d95bc2fb"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux_2_17_armv7l.whl", hash = "sha256:6656a96b3c19cad9d91e0840caa68b792b04f98959e70fa198455c27010dc342"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux_2_5_i686.whl", hash = "sha256:eaf502117aed2b5be6feeb14e1a765f3627482db8c89ffcfe72615d2055e1ab9"},
-    {file = "frida-17.2.15-cp37-abi3-manylinux_2_5_x86_64.whl", hash = "sha256:a121ad9485437a12e6089ae5ca2b1cb246bb0602847b6a5111dbabec83208c37"},
-    {file = "frida-17.2.15-cp37-abi3-win32.whl", hash = "sha256:b41268f3b35208a226a4bbb3797692dfa9187ce28e8b00e497b8bdca5b002ea3"},
-    {file = "frida-17.2.15-cp37-abi3-win_amd64.whl", hash = "sha256:18038888bd133000499985900c540e0e70b3c098b6ee505f8946dda45ba31fba"},
-    {file = "frida-17.2.15-cp37-abi3-win_arm64.whl", hash = "sha256:10e9ddb709f070ea402098d25edc84449a0a6c69316e9558edc1144c608dcbda"},
-    {file = "frida-17.2.15.tar.gz", hash = "sha256:224cc022c0c424052b494de16f2aa61ed19b6fd4c27d6d322e229b976e8f2a80"},
+    {file = "frida-16.6.6-cp37-abi3-macosx_10_13_x86_64.whl", hash = "sha256:b00a2b5f877cbb4955e72413c1f620dc75498a93d4d9a01f663053f2cfb94992"},
+    {file = "frida-16.6.6-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:dcf59869117f4f6eaa6514555fa0a6499b5efa4e095a5785979b057841037f04"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux1_i686.whl", hash = "sha256:9dc05717c8079cad31268a9714cc6966931e7400487cfa0c19e6c077dea129ac"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux1_x86_64.whl", hash = "sha256:288d99fb774bd04b229977bf112878674e851dbb6e14b528aeb04ec085b10a4f"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:d74bd8de1aebd0acae49c89fad6ace2dddf5852df236b805dc83d5c524745e59"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux2014_armv7l.whl", hash = "sha256:853e1e786b24b726ea0e91e6855ca879271bf3dd4265085c019c19d716f489fd"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux_2_17_aarch64.whl", hash = "sha256:ab9ca0e41e89cc881dbaa33c724066c9839c1b92a06b9f92fa9ab00dc31d62e0"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux_2_17_armv7l.whl", hash = "sha256:47aaacb1246a0f8587a1f4083761189aea39c51ce545cf998076814172d31770"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux_2_5_i686.whl", hash = "sha256:9ba5c342fc7a46599a4835e2fb3693342ec732963a0518b2d884d951bb5ea5f4"},
+    {file = "frida-16.6.6-cp37-abi3-manylinux_2_5_x86_64.whl", hash = "sha256:f27b230dd243ab3708f4051bcd9567cfe02893a706c5c3fe1573ccc2ef5a2969"},
+    {file = "frida-16.6.6-cp37-abi3-win32.whl", hash = "sha256:44b4044625afa60f0799fedecfe0a25dab610556a469151dc02569555d0436a9"},
+    {file = "frida-16.6.6-cp37-abi3-win_amd64.whl", hash = "sha256:12d0117ea035bfcb5e4d685e88af02ce815169945702192ea9c21c0ebba42706"},
+    {file = "frida-16.6.6.tar.gz", hash = "sha256:384572cd21185e6b152628216e83fcddbb869572ad55609582580494ce8b6c2a"},
 ]
 
 [[package]]
@@ -368,4 +367,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "b5955c1659508167d3e32bc28461a3b1d8a29cad05e8b8d9bd3ad54c8f8cd9c4"
+content-hash = "c11a1910ca0f39cff3314756f24a65d2b7e968950a5d609035e06d82e9dca7f5"

@@ -27,15 +27,15 @@ def main():
 
     upload_standalone_script(
         emulator_id,
-        "rel/java.js",
+        "rel1666/java.js",
         {"proxy_url": proxy_url},
     )
     upload_standalone_script(
         emulator_id,
-        "rel/native.js",
+        "rel1666/native.js",
         {"proxy_url": proxy_url},
     )
-    upload_standalone_script(emulator_id, "rel/extra.js", config["extra_config"])
+    upload_standalone_script(emulator_id, "rel1666/extra.js", config["extra_config"])
 
 
 if __name__ == "__main__":

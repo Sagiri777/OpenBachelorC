@@ -10,7 +10,7 @@ from .const import PACKAGE_NAME
 from .config import config
 from .adb import start_gadget
 
-SCRIPT_DIRPATH = "rel/"
+SCRIPT_DIRPATH = "rel1666/"
 
 JAVA_SCRIPT_FILEPATH = os.path.join(SCRIPT_DIRPATH, "java.js")
 NATIVE_SCRIPT_FILEPATH = os.path.join(SCRIPT_DIRPATH, "native.js")
