@@ -35,6 +35,7 @@ command_lst = [
     "anti_air",
     "true_aoe",
     "no_ban_card",
+    "cloner_assist",
 ]
 
 trainer_word_completer = WordCompleter(
