@@ -313,3 +313,20 @@ def upload_standalone_script(emulator_id, script_filepath, script_conf):
             f"/sdcard/openbachelor/{script_conf_filename}",
         ],
     )
+
+
+def kill_root_process(emulator_id, process_name):
+    kill_root_process_cmd = f"pkill -f '{process_name}'"
+    if config["use_su"]:
+        kill_root_process_cmd = f"su -c {kill_root_process_cmd}"
+
+    print(f"info: killing {process_name}")
+    proc = subprocess.run(
+        [ADB_FILEPATH, "-s", emulator_id, "shell", kill_root_process_cmd],
+    )
+
+
+def kill_frida_server(emulator_id):
+    process_name = os.path.basename(ANDROID_FRIDA_SERVER_FILEPATH)
+
+    kill_root_process(emulator_id, process_name)
