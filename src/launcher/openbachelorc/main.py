@@ -14,6 +14,7 @@ from .adb import (
     start_forward_proxy,
     clear_dumped_json,
     kill_frida_server,
+    kill_root_process,
 )
 from .config import config
 from .inject import start_game
@@ -77,6 +78,8 @@ def main():
     print(f"info: using emulator {emulator_id}")
 
     upload_frida_server_if_necessary(emulator_id)
+
+    kill_root_process(emulator_id, "florida-")
 
     start_frida_server(emulator_id)
 
