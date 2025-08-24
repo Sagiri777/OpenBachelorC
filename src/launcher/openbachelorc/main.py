@@ -13,6 +13,7 @@ from .adb import (
     clear_forward_proxy,
     start_forward_proxy,
     clear_dumped_json,
+    kill_frida_server,
 )
 from .config import config
 from .inject import start_game
@@ -146,6 +147,8 @@ def main():
                     game.exec_trainer_command(f"{cmd_prefix}{rel_cmd}")
             else:
                 game.exec_trainer_command(f"{cmd_prefix}{cmd}")
+
+    kill_frida_server(emulator_id)
 
 
 if __name__ == "__main__":
