@@ -154,10 +154,11 @@ def root_emulator(emulator_id):
     print("info: emulator rooted")
 
 
-def check_root(emulator_id):
-    check_root_cmd = "id -u"
+def run_root_cmd(emulator_id, root_cmd):
+    tmp_lst = []
+
     if config["use_su"]:
-        check_root_cmd = f"su -c {check_root_cmd}"
+        tmp_lst = ["su", "-c"]
 
     proc = subprocess.run(
         [
@@ -165,11 +166,20 @@ def check_root(emulator_id):
             "-s",
             emulator_id,
             "shell",
-            check_root_cmd,
+            *tmp_lst,
+            root_cmd,
         ],
         capture_output=True,
         text=True,
     )
+
+    return proc
+
+
+def check_root(emulator_id):
+    check_root_cmd = "id -u"
+
+    proc = run_root_cmd(check_root_cmd)
 
     if proc.stdout.strip() == "0":
         return True
@@ -190,23 +200,12 @@ def start_frida_server(emulator_id):
 
     frida_port = config["frida_port"]
 
+    # flag "-C" avoids blocking
     start_frida_server_cmd = (
         f"'{ANDROID_FRIDA_SERVER_FILEPATH}' -l 127.0.0.1:{frida_port} -D -C"
     )
 
-    if config["use_su"]:
-        start_frida_server_cmd = f"su -c {start_frida_server_cmd}"
-
-    # flag "-C" avoids blocking
-    proc = subprocess.run(
-        [
-            ADB_FILEPATH,
-            "-s",
-            emulator_id,
-            "shell",
-            start_frida_server_cmd,
-        ],
-    )
+    proc = run_root_cmd(start_frida_server_cmd)
 
     print("info: frida server started")
 
@@ -317,13 +316,9 @@ def upload_standalone_script(emulator_id, script_filepath, script_conf):
 
 def kill_root_process(emulator_id, process_name):
     kill_root_process_cmd = f"pkill -f '{process_name}'"
-    if config["use_su"]:
-        kill_root_process_cmd = f"su -c {kill_root_process_cmd}"
 
     print(f"info: killing {process_name}")
-    proc = subprocess.run(
-        [ADB_FILEPATH, "-s", emulator_id, "shell", kill_root_process_cmd],
-    )
+    proc = run_root_cmd(kill_root_process_cmd)
 
 
 def kill_frida_server(emulator_id):
