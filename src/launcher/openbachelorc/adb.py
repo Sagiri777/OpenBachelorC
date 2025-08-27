@@ -179,7 +179,7 @@ def run_root_cmd(emulator_id, root_cmd):
 def check_root(emulator_id):
     check_root_cmd = "id -u"
 
-    proc = run_root_cmd(check_root_cmd)
+    proc = run_root_cmd(emulator_id, check_root_cmd)
 
     if proc.stdout.strip() == "0":
         return True
@@ -205,7 +205,7 @@ def start_frida_server(emulator_id):
         f"'{ANDROID_FRIDA_SERVER_FILEPATH}' -l 127.0.0.1:{frida_port} -D -C"
     )
 
-    proc = run_root_cmd(start_frida_server_cmd)
+    proc = run_root_cmd(emulator_id, start_frida_server_cmd)
 
     print("info: frida server started")
 
@@ -318,7 +318,7 @@ def kill_root_process(emulator_id, process_name):
     kill_root_process_cmd = f"pkill -f '{process_name}'"
 
     print(f"info: killing {process_name}")
-    proc = run_root_cmd(kill_root_process_cmd)
+    proc = run_root_cmd(emulator_id, kill_root_process_cmd)
 
 
 def kill_frida_server(emulator_id):
