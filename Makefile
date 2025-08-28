@@ -1,7 +1,8 @@
 .PHONY: setup main main_no_proxy distclean load_config_rooted_phone load_config_jailed_phone load_config_2461 config_enable_trainer config_disable_trainer
 
 setup:
-	brew install python pipx adb jq
+	-brew install python pipx adb jq
+	-sudo apt install pipx adb jq
 	pipx install poetry
 	pipx run poetry install
 
