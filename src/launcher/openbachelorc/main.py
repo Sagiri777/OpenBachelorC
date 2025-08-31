@@ -90,6 +90,10 @@ def main():
     if host == "127.0.0.1":
         start_reverse_proxy(emulator_id, port)
 
+    multiplayer_port = config["multiplayer_port"]
+    if multiplayer_port > 0:
+        start_reverse_proxy(emulator_id, multiplayer_port)
+
     frida_port = config["frida_port"]
     gadget_port = config["gadget_port"]
 
