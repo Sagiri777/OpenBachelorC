@@ -323,3 +323,4 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,node
 .DS_Store
+/.codebuddy
