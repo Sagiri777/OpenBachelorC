@@ -20,7 +20,11 @@ TRAINER_SCRIPT_FILEPATH = os.path.join(SCRIPT_DIRPATH, "trainer.js")
 
 def test_remote_port():
     try:
-        requests.get("http://127.0.0.1:27042", proxies={"http": "", "https": ""})
+        requests.get(
+            "http://127.0.0.1:27042",
+            proxies={"http": "", "https": ""},
+            timeout=5,
+        )
         return True
     except Exception:
         return False
