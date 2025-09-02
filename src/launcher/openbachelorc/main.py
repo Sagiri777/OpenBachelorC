@@ -52,7 +52,7 @@ trainer_word_completer = WordCompleter(
 )
 
 
-def main():
+def setup_config():
     if "--no_proxy" in sys.argv:
         config["no_proxy"] = True
 
@@ -64,6 +64,8 @@ def main():
         print("warn: trainer is disabled when no proxy is enabled")
         config["enable_trainer"] = False
 
+
+def setup_game():
     running_emulator_id_lst = get_running_emulators()
 
     if not running_emulator_id_lst:
@@ -107,8 +109,33 @@ def main():
 
     print("info: game started")
 
-    print("----------")
+    return emulator_id, game
 
+
+def run_cmd(game, text):
+    cmd_arr = text.split()
+    cmd_flag = True
+
+    if cmd_arr[0] == "enable":
+        cmd_arr = cmd_arr[1:]
+    elif cmd_arr[0] == "disable":
+        cmd_arr = cmd_arr[1:]
+        cmd_flag = False
+
+    if cmd_flag:
+        cmd_prefix = "enable:"
+    else:
+        cmd_prefix = "disable:"
+
+    for cmd in cmd_arr:
+        if cmd == "all":
+            for rel_cmd in command_lst:
+                game.exec_trainer_command(f"{cmd_prefix}{rel_cmd}")
+        else:
+            game.exec_trainer_command(f"{cmd_prefix}{cmd}")
+
+
+def setup_cli(emulator_id, game):
     register_callback_func("pull_dumped_json", lambda: pull_dumped_json(emulator_id))
     register_callback_func("clear_dumped_json", lambda: clear_dumped_json(emulator_id))
 
@@ -118,7 +145,7 @@ def main():
 
     while True:
         try:
-            text = session.prompt("> ")
+            text = session.prompt("> ").strip()
         except KeyboardInterrupt:
             continue
         except EOFError:
@@ -132,31 +159,23 @@ def main():
             game.exec_trainer_command(text[1:])
             continue
 
-        cmd_arr = text.split()
-        cmd_flag = True
+        run_cmd(game, text)
 
-        if not cmd_arr:
-            continue
 
-        if cmd_arr[0] == "enable":
-            cmd_arr = cmd_arr[1:]
-        elif cmd_arr[0] == "disable":
-            cmd_arr = cmd_arr[1:]
-            cmd_flag = False
-
-        if cmd_flag:
-            cmd_prefix = "enable:"
-        else:
-            cmd_prefix = "disable:"
-
-        for cmd in cmd_arr:
-            if cmd == "all":
-                for rel_cmd in command_lst:
-                    game.exec_trainer_command(f"{cmd_prefix}{rel_cmd}")
-            else:
-                game.exec_trainer_command(f"{cmd_prefix}{cmd}")
-
+def cleaup(emulator_id):
     kill_frida_server(emulator_id)
+
+
+def main():
+    setup_config()
+
+    emulator_id, game = setup_game()
+
+    print("----------")
+
+    setup_cli(emulator_id, game)
+
+    cleaup()
 
 
 if __name__ == "__main__":
