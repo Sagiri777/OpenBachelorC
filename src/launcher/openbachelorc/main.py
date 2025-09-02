@@ -178,7 +178,7 @@ def main():
 
     setup_cli(emulator_id, game)
 
-    cleaup()
+    cleaup(emulator_id)
 
 
 if __name__ == "__main__":
