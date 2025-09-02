@@ -50,8 +50,12 @@ def get_new_nonce():
     return get_random_bytes(LEN_NONCE)
 
 
+def get_encrypted_filepath(filepath: Path):
+    return filepath.with_suffix(filepath.suffix + ENCRYPTED_EXT)
+
+
 def try_get_file_content(filepath: Path):
-    encrypted_filepath = filepath.with_suffix(ENCRYPTED_EXT)
+    encrypted_filepath = get_encrypted_filepath(filepath)
 
     if not encrypted_filepath.is_file():
         return None
@@ -99,7 +103,7 @@ def encrypt_file(filepath: Path):
         LOCKER_VERSION.to_bytes(LEN_LOCKER_VERSION, byteorder="big") + nonce
     ).ljust(LOCKER_HEADER_SIZE)
 
-    encrypted_filepath = filepath.with_suffix(ENCRYPTED_EXT)
+    encrypted_filepath = get_encrypted_filepath(filepath)
 
     encrypted_filepath.write_bytes(header + payload)
 
