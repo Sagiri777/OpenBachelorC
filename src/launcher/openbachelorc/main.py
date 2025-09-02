@@ -151,6 +151,9 @@ def setup_cli(emulator_id, game):
         except EOFError:
             break
 
+        if not text:
+            continue
+
         if text.startswith("?"):
             invoke_callback_func(text[1:])
             continue
