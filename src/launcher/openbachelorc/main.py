@@ -1,4 +1,5 @@
 import sys
+import argparse
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
@@ -53,10 +54,15 @@ trainer_word_completer = WordCompleter(
 
 
 def setup_config():
-    if "--no_proxy" in sys.argv:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--no_proxy", action="store_true")
+    parser.add_argument("--dump_json", action="store_true")
+    args = parser.parse_args()
+
+    if args.no_proxy:
         config["no_proxy"] = True
 
-    if "--dump_json" in sys.argv:
+    if args.dump_json:
         config["enable_trainer"] = True
         config["trainer_config"]["dump_json"] = True
 
