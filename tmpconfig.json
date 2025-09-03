@@ -1,12 +1,11 @@
 {
     "host": "127.0.0.1",
     "port": 8443,
-    "multiplayer_port": 8543,
     "no_proxy": false,
     "frida_port": 9443,
     "gadget_port": 10443,
-    "use_su": true,
-    "use_gadget": false,
+    "use_su": false,
+    "use_gadget": true,
     "use_emulated_realm": false,
     "enable_extra": true,
     "extra_config": {
@@ -15,8 +14,8 @@
         "vision": true,
         "vision_font_size": 22
     },
-    "enable_trainer": true,
+    "enable_trainer": false,
     "trainer_config": {
-        "dump_json": true
+        "dump_json": false
     }
 }
