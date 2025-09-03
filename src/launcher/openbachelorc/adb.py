@@ -154,11 +154,14 @@ def root_emulator(emulator_id):
     print("info: emulator rooted")
 
 
-def run_root_cmd(emulator_id, root_cmd):
+def run_root_cmd(emulator_id, root_cmd, kwargs=None):
     tmp_lst = []
 
     if config["use_su"]:
         tmp_lst = ["su", "-c"]
+
+    if kwargs is None:
+        kwargs = {}
 
     proc = subprocess.run(
         [
@@ -169,8 +172,7 @@ def run_root_cmd(emulator_id, root_cmd):
             *tmp_lst,
             root_cmd,
         ],
-        capture_output=True,
-        text=True,
+        **kwargs,
     )
 
     return proc
@@ -179,7 +181,14 @@ def run_root_cmd(emulator_id, root_cmd):
 def check_root(emulator_id):
     check_root_cmd = "id -u"
 
-    proc = run_root_cmd(emulator_id, check_root_cmd)
+    proc = run_root_cmd(
+        emulator_id,
+        check_root_cmd,
+        kwargs={
+            "capture_output": True,
+            "text": True,
+        },
+    )
 
     if proc.stdout.strip() == "0":
         return True

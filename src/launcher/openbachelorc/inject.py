@@ -181,7 +181,12 @@ def start_target_app():
 
 def test_remote_port():
     try:
-        requests.get("http://127.0.0.1:27042", proxies={"http": "", "https": ""}, timeout=5)
+        requests.get(
+            "http://127.0.0.1:27042",
+            proxies={"http": "", "https": ""},
+            timeout=5,
+        )
+
         return True
     except Exception:
         return False
