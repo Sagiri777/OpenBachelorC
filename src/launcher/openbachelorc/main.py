@@ -171,7 +171,7 @@ def setup_cli(emulator_id, game):
         run_cmd(game, text)
 
 
-def cleaup(emulator_id):
+def cleanup(emulator_id):
     kill_frida_server(emulator_id)
 
 
@@ -184,7 +184,7 @@ def main():
 
     setup_cli(emulator_id, game)
 
-    cleaup(emulator_id)
+    cleanup(emulator_id)
 
 
 if __name__ == "__main__":
