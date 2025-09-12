@@ -4,7 +4,7 @@ OS := $(shell uname)
 
 ifeq ($(OS), Darwin)
 install-package:
-	brew install python pipx adb jq
+	brew install python pipx android-platform-tools jq
 else
 install-package:
 	sudo apt install pipx adb jq
