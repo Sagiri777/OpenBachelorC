@@ -90,7 +90,8 @@ def setup_game():
 
     kill_root_process(emulator_id, "florida-")
 
-    start_frida_server(emulator_id)
+    if not config["use_gadget"]:
+        start_frida_server(emulator_id)
 
     host = config["host"]
     port = config["port"]
@@ -176,15 +177,17 @@ def cleanup(emulator_id):
 
 
 def main():
-    setup_config()
+    try:
+        setup_config()
 
-    emulator_id, game = setup_game()
+        emulator_id, game = setup_game()
 
-    print("----------")
+        print("----------")
 
-    setup_cli(emulator_id, game)
+        setup_cli(emulator_id, game)
 
-    cleanup(emulator_id)
+    finally:
+        cleanup(emulator_id)
 
 
 if __name__ == "__main__":
