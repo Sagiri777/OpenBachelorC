@@ -1,8 +1,16 @@
-.PHONY: setup main main_no_proxy distclean load_config_rooted_phone load_config_jailed_phone load_config_2461 config_enable_trainer config_disable_trainer
+OS := $(shell uname)
 
-setup:
-	-brew install python pipx adb jq
-	-sudo apt install pipx adb jq
+.PHONY: setup install-package main main_no_proxy distclean load_config_rooted_phone load_config_jailed_phone load_config_2461 config_enable_trainer config_disable_trainer
+
+ifeq ($(OS), Darwin)
+install-package:
+	brew install python pipx android-platform-tools jq
+else
+install-package:
+	sudo apt install pipx adb jq
+endif
+
+setup: install-package
 	pipx install poetry
 	pipx run poetry install
 
